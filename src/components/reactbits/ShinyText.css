@@ -1,0 +1,21 @@
+.shiny-text {
+  display: inline-block;
+  background: linear-gradient(
+    120deg,
+    currentColor 0%,
+    currentColor 40%,
+    var(--shimmer-color, hsla(340, 80%, 85%, 0.6)) 50%,
+    currentColor 60%,
+    currentColor 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText var(--shimmer-speed, 3s) linear infinite;
+}
+
+@keyframes shimmerText {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
