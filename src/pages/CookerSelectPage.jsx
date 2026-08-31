@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useOrderStore from '../store/useOrderStore';
+import useAuthStore from '../store/useAuthStore';
 import { motion } from 'motion/react';
 
 const COOKERS = [
@@ -11,6 +12,7 @@ const COOKERS = [
 
 export default function CookerSelectPage() {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
   const [selected, setSelected] = useState(null);
 
   const handleSelect = (id) => {
@@ -23,7 +25,17 @@ export default function CookerSelectPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center p-8 relative">
+      {/* Admin Quick Link for Testing */}
+      {user?.rol === 'admin' && (
+        <button 
+          onClick={() => navigate('/admin')}
+          className="absolute top-6 right-6 btn btn-secondary text-sm z-50"
+        >
+          Panel de Control ⚙️
+        </button>
+      )}
+
       <h2 className="text-4xl font-display font-bold text-[var(--fukai-cream)] mb-12">
         ¿Quién preparará tu cheesecake hoy?
       </h2>
