@@ -1,0 +1,757 @@
+/* ══════════════════════════════════════════════════════════
+   深い Fukai — Landing Page Styles
+   Kawaii aesthetic · Japanese-Korean cute style
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  background: hsla(340, 80%, 85%, 0.1);
+  border: 1px solid hsla(340, 80%, 85%, 0.2);
+  font-family: var(--font-jp);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  color: var(--fukai-sakura);
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.hero-title-group {
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--fukai-cream) 40%, var(--fukai-lavender) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--fukai-cream);
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  line-height: 1.8;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.hero-cta-primary {
+  padding: 1rem 3rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--fukai-sakura-deep), var(--fukai-lavender));
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px hsla(340, 65%, 65%, 0.4);
+  transition: all 0.4s var(--ease-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px hsla(340, 65%, 65%, 0.5);
+}
+
+.hero-cta-secondary {
+  padding: 0.875rem 2.5rem;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--fukai-cream);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--fukai-sakura);
+}
+
+/* Floating mascots in hero */
+.hero-mascots {
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  z-index: 5;
+}
+
+.hero-mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.hero-mascot:nth-child(1) { animation-delay: 0s; }
+.hero-mascot:nth-child(2) { animation-delay: -1s; }
+.hero-mascot:nth-child(3) { animation-delay: -2s; }
+
+.hero-mascot img {
+  width: clamp(60px, 12vw, 120px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.hero-mascot:hover img {
+  transform: scale(1.15) translateY(-8px);
+}
+
+.hero-mascot span {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--fukai-cream);
+  opacity: 0.6;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Scroll indicator ─── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeInUp 1s ease-out 1s both;
+}
+
+.scroll-indicator span {
+  font-size: 0.75rem;
+  color: var(--fukai-cream);
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scroll-indicator .scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--fukai-sakura), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─── Section shared ─── */
+.section {
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-label {
+  font-family: var(--font-jp);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  color: var(--fukai-sakura);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--fukai-cream);
+  letter-spacing: -0.01em;
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--fukai-sakura), var(--fukai-lavender));
+  margin: 1rem auto 0;
+  border-radius: 9999px;
+}
+
+/* ─── Experiencia Section ─── */
+.experiencia-section {
+  background: var(--fukai-deep);
+  padding: 6rem 2rem;
+}
+
+.experiencia-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experiencia-step {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  background: hsla(270, 20%, 15%, 0.5);
+  border: 1px solid hsla(36, 60%, 95%, 0.06);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.experiencia-step:hover {
+  background: hsla(270, 20%, 18%, 0.6);
+  border-color: hsla(340, 80%, 85%, 0.15);
+  transform: translateY(-4px);
+}
+
+.experiencia-step-number {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--fukai-sakura), var(--fukai-lavender));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.experiencia-step-content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--fukai-cream);
+  margin-bottom: 0.5rem;
+}
+
+.experiencia-step-content p {
+  font-size: 1rem;
+  color: var(--fukai-cream);
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+.experiencia-step-content .step-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Flow connector ─── */
+.flow-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  opacity: 0.3;
+}
+
+.flow-connector .flow-arrow {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--fukai-sakura), transparent);
+}
+
+/* ─── Menu Section ─── */
+.menu-section {
+  background: var(--fukai-deep);
+  padding: 6rem 2rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: hsla(270, 20%, 15%, 0.5);
+  border: 1px solid hsla(36, 60%, 95%, 0.06);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px hsla(270, 30%, 10%, 0.4);
+  border-color: hsla(340, 80%, 85%, 0.2);
+}
+
+.menu-card-visual {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-card-visual.horneado {
+  background: linear-gradient(135deg, hsla(30, 70%, 50%, 0.3), hsla(36, 60%, 95%, 0.1));
+}
+
+.menu-card-visual.refrigerado {
+  background: linear-gradient(135deg, hsla(200, 70%, 80%, 0.3), hsla(36, 60%, 95%, 0.1));
+}
+
+.menu-card-visual .cake-emoji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.menu-card-body {
+  padding: 2rem;
+}
+
+.menu-card-body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--fukai-cream);
+  margin-bottom: 0.5rem;
+}
+
+.menu-card-body .tag {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.menu-card-body .tag.horneado {
+  background: hsla(30, 70%, 50%, 0.2);
+  color: var(--fukai-caramel);
+}
+
+.menu-card-body .tag.refrigerado {
+  background: hsla(200, 70%, 80%, 0.2);
+  color: var(--fukai-lavender);
+}
+
+.menu-card-body .description {
+  font-size: 1rem;
+  color: var(--fukai-cream);
+  opacity: 0.7;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--fukai-sakura);
+}
+
+.menu-decos {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu-decos span {
+  font-size: 1.25rem;
+}
+
+/* ─── Cocineros Section ─── */
+.cocineros-section {
+  background: var(--fukai-deep);
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.cocineros-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cooker-card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: hsla(270, 20%, 15%, 0.5);
+  border: 1px solid hsla(36, 60%, 95%, 0.06);
+  transition: all 0.4s var(--ease-smooth);
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.cooker-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px hsla(270, 30%, 10%, 0.4);
+}
+
+.cooker-card.capi:hover { border-color: var(--fukai-caramel); }
+.cooker-card.kitty:hover { border-color: var(--fukai-sakura); }
+.cooker-card.aguacate:hover { border-color: var(--fukai-matcha); }
+
+.cooker-card-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cooker-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.cooker-card-img .ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid;
+  opacity: 0.5;
+}
+
+.cooker-card.capi .ring { border-color: var(--fukai-caramel); }
+.cooker-card.kitty .ring { border-color: var(--fukai-sakura); }
+.cooker-card.aguacate .ring { border-color: var(--fukai-matcha); }
+
+.cooker-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--fukai-cream);
+  margin-bottom: 0.5rem;
+}
+
+.cooker-card .cooker-role {
+  font-family: var(--font-jp);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.cooker-card.capi .cooker-role { color: var(--fukai-caramel); }
+.cooker-card.kitty .cooker-role { color: var(--fukai-sakura); }
+.cooker-card.aguacate .cooker-role { color: var(--fukai-matcha); }
+
+.cooker-card .cooker-bio {
+  font-size: 0.95rem;
+  color: var(--fukai-cream);
+  opacity: 0.6;
+  line-height: 1.7;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* ─── Filosofía Section ─── */
+.filosofia-section {
+  background: var(--fukai-deep);
+  padding: 6rem 2rem;
+}
+
+.filosofia-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.filosofia-hero {
+  margin-bottom: 4rem;
+}
+
+.filosofia-hero .big-emoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.filosofia-hero h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--fukai-cream);
+  margin-bottom: 1rem;
+}
+
+.filosofia-text {
+  font-size: 1.125rem;
+  color: var(--fukai-cream);
+  opacity: 0.75;
+  line-height: 2;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.filosofia-highlight {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, hsla(340, 80%, 85%, 0.15), hsla(270, 40%, 70%, 0.15));
+  border: 1px solid hsla(340, 80%, 85%, 0.2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--fukai-sakura);
+  font-size: 1.125rem;
+}
+
+.filosofia-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.filosofia-item {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: hsla(270, 20%, 15%, 0.5);
+  border: 1px solid hsla(36, 60%, 95%, 0.06);
+  text-align: left;
+}
+
+.filosofia-item .fi-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.filosofia-item h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--fukai-cream);
+  margin-bottom: 0.5rem;
+}
+
+.filosofia-item p {
+  font-size: 0.95rem;
+  color: var(--fukai-cream);
+  opacity: 0.65;
+  line-height: 1.7;
+}
+
+/* ─── Footer ─── */
+.footer {
+  background: var(--fukai-deep);
+  border-top: 1px solid hsla(36, 60%, 95%, 0.06);
+  padding: 3rem 2rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.footer-logo span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--fukai-cream);
+  letter-spacing: 0.15em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--fukai-cream);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--fukai-cream);
+  opacity: 0.3;
+}
+
+/* ─── Responsive ─── */
+@media (min-width: 768px) {
+  .experiencia-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cocineros-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filosofia-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 8rem 4rem;
+  }
+
+  .experiencia-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .experiencia-step {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .flow-connector {
+    display: none;
+  }
+
+  .filosofia-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ─── Animations for sections ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-4px) rotate(0deg); }
+  75% { transform: translateY(4px) rotate(-0.5deg); }
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+}
+
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Particle decoration ─── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--fukai-sakura);
+  opacity: 0.15;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}

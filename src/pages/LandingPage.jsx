@@ -1,114 +1,318 @@
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/useAuthStore';
 import ShinyText from '../components/reactbits/ShinyText';
 import Aurora from '../components/reactbits/Aurora';
 
+const DECORATIONS = [
+  { id: 'fresas', emoji: '🍓' },
+  { id: 'arandanos', emoji: '🫐' },
+  { id: 'chocolate', emoji: '🍫' },
+  { id: 'caramelo', emoji: '🍯' },
+  { id: 'mermelada', emoji: '🍇' },
+  { id: 'nueces', emoji: '🥜' },
+  { id: 'oreo', emoji: '🍪' },
+  { id: 'matcha', emoji: '🍵' },
+];
+
+const COOKERS = [
+  { id: 'capibara', name: 'Capi', fullName: 'Capibara', emoji: '🧉', bio: 'Cremosidad profunda con paciencia suramericana', color: 'var(--fukai-caramel)' },
+  { id: 'kitty', name: 'Kitty', fullName: 'Hello Kitty', emoji: '🎀', bio: 'Elegancia kawaii en cada bocado', color: 'var(--fukai-sakura)' },
+  { id: 'aguacate', name: 'Avo', fullName: 'Aguacate', emoji: '🥑', bio: 'Fresh vibes con un toque verde mágico', color: 'var(--fukai-matcha)' },
+];
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const { user, login } = useAuthStore();
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    sectionsRef.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const handleStart = async () => {
     if (user) {
-      if (user.rol === 'admin' || user.rol === 'cocinero') {
-        navigate('/admin');
-      } else {
-        navigate('/select-cooker');
-      }
-    } else {
-      // Auto-login test admin user for demo/testing purposes
-      try {
-        await login('admin@fukai.com', 'admin123');
-        // As an admin, they can go to the admin dashboard, but for testing the flow, 
-        // we might want them to go to select-cooker to test the order sequence, 
-        // or go to admin. Let's send them to select-cooker to test ordering, 
-        // they can navigate to admin from there if there's a nav link.
-        navigate('/select-cooker');
-      } catch (err) {
-        alert('Error al iniciar sesión con el usuario de prueba.');
-      }
+      navigate(user.rol === 'admin' ? '/admin' : '/select-cooker');
+      return;
+    }
+    try {
+      await login('admin@fukai.com', 'admin123');
+      navigate('/select-cooker');
+    } catch (err) {
+      alert('Error al iniciar sesión con el usuario de prueba.');
     }
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center bg-black/40 overflow-hidden font-body">
-      {/* Background Aurora */}
-      <Aurora className="absolute inset-0 z-0 opacity-70" colorOne="hsla(340, 80%, 85%, 0.5)" colorTwo="hsla(270, 40%, 70%, 0.4)" />
-      
-      {/* Header */}
-      <header className="z-20 w-full px-8 py-6 flex justify-between items-center max-w-7xl mx-auto animate-[fade-in_1.5s_ease-out]">
-        <div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
-          <div className="w-12 h-12 rounded-full glass flex items-center justify-center p-2 shadow-[0_0_15px_rgba(255,182,193,0.3)]">
-            <img src="/assets/logo.png" alt="Fukai Logo" className="w-full h-full object-contain" />
+    <div className="relative min-h-screen w-full overflow-hidden bg-[var(--fukai-deep)] text-[var(--fukai-cream)] font-body">
+      <Aurora className="absolute inset-0 z-0 opacity-60" colorOne="hsla(340, 80%, 85%, 0.4)" colorTwo="hsla(270, 40%, 70%, 0.3)" />
+
+      {/* ─── NAV ─── */}
+      <header className="z-20 w-full px-6 py-5 flex justify-between items-center max-w-7xl mx-auto">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full glass flex items-center justify-center">
+            <img src="/assets/logo.png" alt="Fukai" className="w-full h-full object-contain" />
           </div>
-          <span className="font-display font-bold text-2xl tracking-widest text-white/90 uppercase">
-            Fukai
-          </span>
+          <span className="font-display font-bold text-lg tracking-widest uppercase text-white/90">Fukai</span>
         </div>
-        <nav className="hidden md:flex gap-10 text-sm font-medium tracking-wider text-[var(--fukai-cream)]/70 uppercase">
-          <a href="#experiencia" className="hover:text-white hover:text-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300">Experiencia</a>
-          <a href="#menu" className="hover:text-white hover:text-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300">Menú</a>
-          <a href="#filosofia" className="hover:text-white hover:text-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300">Filosofía</a>
+        <nav className="hidden md:flex gap-8 text-sm font-medium tracking-wider text-[var(--fukai-cream)]/60 uppercase">
+          <a href="#experiencia" className="hover:text-[var(--fukai-sakura)] transition-colors">Experiencia</a>
+          <a href="#menu" className="hover:text-[var(--fukai-sakura)] transition-colors">Menú</a>
+          <a href="#cocineros" className="hover:text-[var(--fukai-sakura)] transition-colors">Cocineros</a>
+          <a href="#filosofia" className="hover:text-[var(--fukai-sakura)] transition-colors">Filosofía</a>
         </nav>
       </header>
 
-      {/* Main Hero Section */}
-      <main className="z-10 flex-grow flex flex-col items-center justify-center text-center px-6 w-full max-w-6xl mx-auto pb-20">
-        
-        {/* Title Group */}
-        <div className="mb-12 animate-[fade-in_1s_ease-out_0.2s_both] flex flex-col items-center">
-          <div className="inline-block glass-light px-6 py-2 rounded-full mb-6 border border-white/10 shadow-lg">
-            <span className="text-sm font-jp tracking-[0.3em] text-[var(--fukai-sakura)] uppercase">
-              Repostería Inmersiva
-            </span>
+      {/* ─── HERO ─── */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="hero-badge">✦ Repostería Inmersiva ✦</div>
+          <div className="hero-title-group">
+            <h1 className="hero-title">
+              <ShinyText text="深い Fukai" speed={3} />
+            </h1>
+            <p className="hero-subtitle">
+              Profundas sensaciones, sabores que invitan a la introspección, el confort de lo inesperado,
+              y la elegancia de la simplicidad.
+            </p>
           </div>
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-display font-bold tracking-tighter drop-shadow-2xl mb-4">
-            <ShinyText text="深い Fukai" speed={3} className="text-transparent bg-clip-text bg-gradient-to-br from-white via-[var(--fukai-cream)] to-[var(--fukai-lavender)]" />
-          </h1>
-        </div>
-        
-        {/* Glassmorphic Card */}
-        <div className="glass max-w-3xl w-full p-10 md:p-14 animate-[slide-up_1s_ease-out_0.5s_both] relative overflow-hidden group border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[2rem]">
-          {/* Subtle hover gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          
-          <p className="text-lg md:text-2xl text-[var(--fukai-cream)]/90 font-light leading-relaxed mb-12 relative z-10">
-            Profundas sensaciones, sabores que invitan a la introspección, el confort de lo inesperado, 
-            y la elegancia de la simplicidad. <br className="hidden md:block" />
-            <span className="font-medium text-white">Descubre el arte en cada detalle.</span>
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
-            <button 
-              onClick={handleStart}
-              className="btn btn-primary text-lg px-12 py-5 w-full sm:w-auto rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,182,193,0.3)] hover:shadow-[0_0_50px_rgba(255,182,193,0.5)] flex items-center justify-center gap-3"
-            >
+          <div className="hero-cta-group">
+            <button onClick={handleStart} className="hero-cta-primary">
               <span>{user ? 'Continuar Pedido' : 'Comenzar Experiencia'}</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </button>
-            <button className="btn btn-secondary text-lg px-12 py-5 w-full sm:w-auto rounded-full hover:bg-white/10 hover:text-white transition-all duration-300 border border-white/20">
-              Explorar Menú
+            <button className="hero-cta-secondary" onClick={() => navigate('#experiencia')}>
+              Descubre Más →
             </button>
           </div>
         </div>
-      </main>
 
-      {/* Decorative floating mascots aligned beautifully at the bottom */}
-      <div className="absolute bottom-0 w-full flex justify-between items-end px-8 md:px-32 z-10 pointer-events-none pb-8">
-<div className="flex flex-col items-center animate-[floatGentle_5s_ease-in-out_infinite]">
-            <img src="/assets/capi.png" className="w-20 md:w-28 max-w-[120px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Capi Mascot" />
+        {/* Floating mascots */}
+        <div className="hero-mascots">
+          <div className="hero-mascot">
+            <img src="/assets/capi.png" alt="Capi" />
+            <span>Capi</span>
           </div>
-          <div className="flex flex-col items-center animate-[floatGentle_4.5s_ease-in-out_infinite_reverse_1s] mb-4">
-            <img src="/assets/avo.png" className="w-16 md:w-24 max-w-[100px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Avo Mascot" />
+          <div className="hero-mascot">
+            <img src="/assets/kitty.png" alt="Kitty" />
+            <span>Kitty</span>
           </div>
-          <div className="flex flex-col items-center animate-[floatGentle_6s_ease-in-out_infinite_0.5s]">
-            <img src="/assets/kitty.png" className="w-20 md:w-28 max-w-[120px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Kitty Mascot" />
+          <div className="hero-mascot">
+            <img src="/assets/avo.png" alt="Avo" />
+            <span>Avo</span>
           </div>
-      </div>
-      
-      {/* Overlay gradient at bottom for smooth cutoff */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--fukai-deep)] to-transparent pointer-events-none z-0"></div>
+        </div>
+
+        <div className="scroll-indicator">
+          <span>Desplazar</span>
+          <div className="scroll-line" />
+        </div>
+      </section>
+
+      {/* ─── EXPERIENCIA ─── */}
+      <section id="experiencia" className="experiencia-section section">
+        <div className="section-header reveal-up">
+          <p className="section-label">La Experiencia</p>
+          <h2 className="section-title">Tu pedido, tu historia</h2>
+          <div className="section-divider" />
+          <p className="mt-4 text-[var(--fukai-cream)] opacity-60 max-w-lg mx-auto">
+            Cada cheesecake vive un ciclo completo. Desde que lo generas hasta que llega a tus manos,
+            lo vives como una experiencia inmersiva y tierna.
+          </p>
+        </div>
+
+        <div className="experiencia-grid">
+          <div className="experiencia-step reveal-up" ref={(el) => (sectionsRef.current[0] = el)}>
+            <div className="experiencia-step-number">1</div>
+            <div className="experiencia-step-content">
+              <div className="step-icon">✨</div>
+              <h3>Genera tu pedido</h3>
+              <p>Elige tu cocinero favorito, selecciona el tipo de cheesecake y personalízalo con sus deliciosas decoraciones. Cada combinación es única.</p>
+            </div>
+          </div>
+
+          <div className="experiencia-step reveal-up" ref={(el) => (sectionsRef.current[1] = el)}>
+            <div className="experiencia-step-number">2</div>
+            <div className="experiencia-step-content">
+              <div className="step-icon">🔮</div>
+              <h3>Preparación en tiempo real</h3>
+              <p>Observa cada paso de la preparación con animaciones tiernas y nubes de diálogo del cocinero. El progreso se actualiza en vivo mientras tu cheesecake cobra vida.</p>
+            </div>
+          </div>
+
+          <div className="experiencia-step reveal-up" ref={(el) => (sectionsRef.current[2] = el)}>
+            <div className="experiencia-step-number">3</div>
+            <div className="experiencia-step-content">
+              <div className="step-icon">🚀</div>
+              <h3>Despacho con tracking</h3>
+              <p>Recibe tu cheesecake con ubicación en tiempo real. Sabrás exactamente cuándo y dónde llega tu experiencia gastronómica.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── MENU ─── */}
+      <section id="menu" className="menu-section section">
+        <div className="section-header reveal-up">
+          <p className="section-label">El Menú</p>
+          <h2 className="section-title">Elige tu cheesecake</h2>
+          <div className="section-divider" />
+        </div>
+
+        <div className="menu-grid">
+          <div className="menu-card reveal-up" ref={(el) => (sectionsRef.current[3] = el)}>
+            <div className="menu-card-visual horneado">
+              <span className="cake-emoji">🍰</span>
+            </div>
+            <div className="menu-card-body">
+              <h3>Horneado Clásico</h3>
+              <span className="tag horneado">Horneado</span>
+              <p className="description">Un cheesecake cremoso horneado a la perfección, con una base de galleta dorada y un interior suave que se derrite en cada bocado.</p>
+              <div className="menu-card-footer">
+                <span className="menu-price">$350</span>
+                <div className="menu-decos">
+                  {DECORATIONS.slice(0, 5).map((d) => (
+                    <span key={d.id}>{d.emoji}</span>
+                  ))}
+                  <span className="text-white/40 text-xs">+3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="menu-card reveal-up" ref={(el) => (sectionsRef.current[4] = el)}>
+            <div className="menu-card-visual refrigerado">
+              <span className="cake-emoji">🍮</span>
+            </div>
+            <div className="menu-card-body">
+              <h3>Refrigerado Sedoso</h3>
+              <span className="tag refrigerado">Refrigerado</span>
+              <p className="description">Un cheesecake no-bake ultra sedoso, con textura de mousse y un sabor delicado que captura la esencia de la simplicidad japonesa.</p>
+              <div className="menu-card-footer">
+                <span className="menu-price">$300</span>
+                <div className="menu-decos">
+                  {DECORATIONS.slice(3, 7).map((d) => (
+                    <span key={d.id}>{d.emoji}</span>
+                  ))}
+                  <span className="text-white/40 text-xs">+1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── COCINEROS ─── */}
+      <section id="cocineros" className="cocineros-section section">
+        <div className="section-header reveal-up">
+          <p className="section-label">Cocineros</p>
+          <h2 className="section-title">¿Quién preparará el tuyo?</h2>
+          <div className="section-divider" />
+          <p className="mt-4 text-[var(--fukai-cream)] opacity-60 max-w-lg mx-auto">
+            Cada cocinero tiene su propia personalidad, estilo y mensaje. Elige al que más te identifique.
+          </p>
+        </div>
+
+        <div className="cocineros-grid">
+          {COOKERS.map((cooker, i) => (
+            <div key={cooker.id} className={`cooker-card ${cooker.id} reveal-up`} ref={(el) => (sectionsRef.current[5 + i] = el)}>
+              <div className="cooker-card-img">
+                <div className="ring" />
+                <img src={`/assets/${cooker.id === 'capibara' ? 'capi' : cooker.id === 'kitty' ? 'kitty' : 'avo'}.png`} alt={cooker.fullName} />
+              </div>
+              <h3>{cooker.fullName}</h3>
+              <p className="cooker-role">{cooker.emoji} · {cooker.name.toUpperCase()}</p>
+              <p className="cooker-bio">{cooker.bio}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── FILOSOFÍA ─── */}
+      <section id="filosofia" className="filosofia-section section">
+        <div className="filosofia-container">
+          <div className="filosofia-hero reveal-up">
+            <span className="big-emoji">💖</span>
+            <h2>Donde lo digital y lo gastronómico se enamoran</h2>
+            <p className="filosofia-text">
+              深い Fukai nace para cautivar a una audiencia joven, principalmente femenina, con una
+              experiencia inmersiva que transforma cada etapa del ciclo de vida de un pedido en una
+              historia tierna y memorable.
+            </p>
+            <span className="filosofia-highlight">
+              ✦ Animaciones kawaii · Personajes 2D/3D · Nubes de diálogo · Libretos de preparación · Step-by-step
+            </span>
+          </div>
+
+          <div className="filosofia-grid">
+            <div className="filosofia-item reveal-up" ref={(el) => (sectionsRef.current[8] = el)}>
+              <div className="fi-icon">🎬</div>
+              <h4>Secuencias cinematográficas</h4>
+              <p>Cada paso del pedido tiene su propio libreto de preparación, sus figuras animadas en 2D/3D y su nube de diálogo exclusiva del cocinero.</p>
+            </div>
+            <div className="filosofia-item reveal-up" ref={(el) => (sectionsRef.current[9] = el)}>
+              <div className="fi-icon">📱</div>
+              <h4>Diseño mobile-first</h4>
+              <p>La aplicación se escala perfectamente a dispositivos móviles. Web primero, luego su clon React Native para que la experiencia te acompañe a donde vayas.</p>
+            </div>
+            <div className="filosofia-item reveal-up" ref={(el) => (sectionsRef.current[10] = el)}>
+              <div className="fi-icon">🫶</div>
+              <h4>Para ti, con cariño</h4>
+              <p>Como cocinero real, tú confirmas cada etapa de la preparación. La app refleja tu trabajo con animaciones que celebran cada logro en el proceso.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA FINAL ─── */}
+      <section className="section" style={{ background: 'var(--fukai-deep)' }}>
+        <div className="filosofia-container reveal-up">
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'var(--fukai-cream)', marginBottom: '1rem' }}>
+            ¿Lista para tu primer pedido?
+          </h2>
+          <p style={{ fontSize: '1.125rem', color: 'var(--fukai-cream)', opacity: 0.6, lineHeight: 1.8, maxWidth: '500px', margin: '0 auto 2rem' }}>
+            Selecciona tu cocinero, personaliza tu cheesecake y vive la experiencia 深い Fukai.
+          </p>
+          <button onClick={handleStart} className="hero-cta-primary">
+            <span>{user ? 'Continuar' : 'Comenzar Ahora'}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* ─── FOOTER ─── */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-logo">
+            <img src="/assets/logo.png" alt="Fukai" />
+            <span>Fukai</span>
+          </div>
+          <div className="footer-links">
+            <a href="#experiencia">Experiencia</a>
+            <a href="#menu">Menú</a>
+            <a href="#cocineros">Cocineros</a>
+            <a href="#filosofia">Filosofía</a>
+          </div>
+          <p className="footer-copy">© 2026 深い Fukai — Todos los derechos reservados</p>
+        </div>
+      </footer>
     </div>
   );
 }
