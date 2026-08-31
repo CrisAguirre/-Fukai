@@ -1,15 +1,17 @@
 import { motion } from 'motion/react';
 
 const STEPS = [
-  { key: 'pending', label: 'Pendiente', icon: '⏳' },
-  { key: 'awakening', label: 'Despertar', icon: '🌅' },
-  { key: 'kitchen', label: 'Cocina', icon: '🍳' },
-  { key: 'preparing', label: 'Preparar', icon: '🥚' },
-  { key: 'baking', label: 'Hornear', icon: '🔥' },
-  { key: 'decorating', label: 'Decorar', icon: '🍓' },
-  { key: 'packaging', label: 'Empacar', icon: '📦' },
-  { key: 'shipping', label: 'Envío', icon: '🚗' },
-  { key: 'delivered', label: 'Entregado', icon: '🎉' },
+  { key: 'pending',    label: 'Pendiente',    icon: '⏳' },
+  { key: 'awakening',  label: 'Confirmar',    icon: '💬' },
+  { key: 'mold',       label: 'Puesta a Punto', icon: '🧰' },
+  { key: 'mixing',     label: 'Mezcla',       icon: '🥣' },
+  { key: 'pouring',    label: 'Vertido',      icon: '🫗' },
+  { key: 'baking',     label: 'Horneado',     icon: '🔥' },
+  { key: 'cooling',    label: 'Enfriar',      icon: '❄️' },
+  { key: 'decorating', label: 'Decorar',      icon: '🎨' },
+  { key: 'packaging',  label: 'Empaque',      icon: '📦' },
+  { key: 'shipping',   label: 'Entrega',      icon: '🏍️' },
+  { key: 'delivered',  label: 'Entregado',    icon: '🎉' },
 ];
 
 export default function ProgressSteps({ 

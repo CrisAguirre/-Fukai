@@ -1,9 +1,9 @@
 import React from 'react';
 
 const COLORS = {
-  capibara: 'var(--fukai-caramel-soft)',
-  kitty: 'var(--fukai-sakura-deep)',
-  aguacate: 'var(--fukai-matcha-soft)',
+  kitty:  'var(--fukai-sakura-deep)',
+  kato:   'var(--fukai-matcha-soft)',
+  chiwi:  'var(--fukai-caramel-soft)',
 };
 
 export default function SpeechBubble({ message, cooker }) {

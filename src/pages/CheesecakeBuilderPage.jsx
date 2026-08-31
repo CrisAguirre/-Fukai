@@ -38,7 +38,7 @@ export default function CheesecakeBuilderPage() {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
 
-  const cooker = sessionStorage.getItem('selectedCooker') || 'capibara';
+  const cooker = sessionStorage.getItem('selectedCooker') || 'kitty';
   const cheesecakeData = { tipo, relleno, base_galleta, dorado, decorado };
   const total = calculatePrice(cheesecakeData);
 

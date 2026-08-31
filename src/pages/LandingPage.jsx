@@ -15,10 +15,10 @@ const DECORATIONS = [
   { id: 'matcha', emoji: '🍵' },
 ];
 
-const COOKERS = [
-  { id: 'capibara', name: 'Capi', fullName: 'Capibara', emoji: '🧉', bio: 'Cremosidad profunda con paciencia suramericana', color: 'var(--fukai-caramel)' },
+ const COOKERS = [
   { id: 'kitty', name: 'Kitty', fullName: 'Hello Kitty', emoji: '🎀', bio: 'Elegancia kawaii en cada bocado', color: 'var(--fukai-sakura)' },
-  { id: 'aguacate', name: 'Avo', fullName: 'Aguacate', emoji: '🥑', bio: 'Fresh vibes con un toque verde mágico', color: 'var(--fukai-matcha)' },
+  { id: 'kato', name: 'Kato', fullName: 'Aguacate', emoji: '🥑', bio: 'Fresh vibes con un toque verde mágico', color: 'var(--fukai-matcha)' },
+  { id: 'chiwi', name: 'Chiwi', fullName: 'Capibara', emoji: '🧉', bio: 'Cremosidad profunda con paciencia suramericana', color: 'var(--fukai-caramel)' },
 ];
 
 export default function LandingPage() {
