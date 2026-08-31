@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import CookerSelectPage from './pages/CookerSelectPage';
 import CheesecakeBuilderPage from './pages/CheesecakeBuilderPage';
 import OrderMonitorPage from './pages/OrderMonitorPage';
+import ShippingFormPage from './pages/ShippingFormPage';
 import AdminDashboard from './pages/AdminDashboard';
 import { connectSocket } from './services/socket';
 
@@ -47,6 +48,12 @@ export default function App() {
         <Route path="/monitor/:orderId" element={
           <ProtectedRoute>
             <OrderMonitorPage />
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/shipping/:orderId" element={
+          <ProtectedRoute>
+            <ShippingFormPage />
           </ProtectedRoute>
         } />
         
