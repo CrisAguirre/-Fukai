@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useOrderStore from '../store/useOrderStore';
-import { joinAdminRoom } from '../services/socket';
+import { joinAdminRoom, getSocket } from '../services/socket';
 
 export default function AdminDashboard() {
   const { orders, fetchOrders, advanceOrder, getStepLabel } = useOrderStore();
@@ -9,7 +9,7 @@ export default function AdminDashboard() {
     fetchOrders();
     joinAdminRoom();
     
-    const socket = require('../services/socket').getSocket();
+    const socket = getSocket();
     const onUpdate = () => {
       fetchOrders(); // Refresh list on any update for simplicity
     };

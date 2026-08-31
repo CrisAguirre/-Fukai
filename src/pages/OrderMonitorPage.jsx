@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useOrderStore from '../store/useOrderStore';
-import { subscribeToOrder, unsubscribeFromOrder } from '../services/socket';
+import { subscribeToOrder, unsubscribeFromOrder, getSocket } from '../services/socket';
 import SequenceOrchestrator from '../animations/SequenceOrchestrator';
 
 export default function OrderMonitorPage() {
@@ -20,9 +20,7 @@ export default function OrderMonitorPage() {
       fetchOrder(orderId).catch(() => navigate('/'));
       subscribeToOrder(orderId);
       
-      // We need to listen to socket events here, assuming a global listener passes to handleStatusUpdate
-      // For a robust app, the socket listener is usually in a top-level provider.
-      const socket = require('../services/socket').getSocket();
+      const socket = getSocket();
       
       const onStatusUpdate = (data) => {
         if (data.orderId === orderId) {
