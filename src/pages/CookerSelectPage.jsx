@@ -59,7 +59,7 @@ export default function CookerSelectPage() {
             <img 
               src={cooker.img} 
               alt={cooker.name} 
-              className={`w-40 h-40 object-contain z-10 transition-transform duration-500 ${selected === cooker.id ? 'animate-[cookerExcited_1s_ease-in-out_infinite]' : 'animate-[floatGentle_3s_infinite]'}`} 
+              className={`w-28 h-28 md:w-32 md:h-32 max-w-[140px] max-h-[140px] object-contain z-10 transition-transform duration-500 ${selected === cooker.id ? 'animate-[cookerExcited_1s_ease-in-out_infinite]' : 'animate-[floatGentle_3s_infinite]'}`} 
             />
             
             <h3 className="mt-6 text-2xl font-display font-medium text-[var(--fukai-cream)] z-10">

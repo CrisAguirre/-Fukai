@@ -96,15 +96,15 @@ export default function LandingPage() {
 
       {/* Decorative floating mascots aligned beautifully at the bottom */}
       <div className="absolute bottom-0 w-full flex justify-between items-end px-8 md:px-32 z-10 pointer-events-none pb-8">
-         <div className="flex flex-col items-center animate-[floatGentle_5s_ease-in-out_infinite]">
-           <img src="/assets/capi.png" className="w-24 md:w-32 h-auto object-contain opacity-60 drop-shadow-xl" alt="Capi Mascot" />
-         </div>
-         <div className="flex flex-col items-center animate-[floatGentle_4.5s_ease-in-out_infinite_reverse_1s] mb-4">
-           <img src="/assets/avo.png" className="w-20 md:w-28 h-auto object-contain opacity-60 drop-shadow-xl" alt="Avo Mascot" />
-         </div>
-         <div className="flex flex-col items-center animate-[floatGentle_6s_ease-in-out_infinite_0.5s]">
-           <img src="/assets/kitty.png" className="w-24 md:w-32 h-auto object-contain opacity-60 drop-shadow-xl" alt="Kitty Mascot" />
-         </div>
+<div className="flex flex-col items-center animate-[floatGentle_5s_ease-in-out_infinite]">
+            <img src="/assets/capi.png" className="w-20 md:w-28 max-w-[120px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Capi Mascot" />
+          </div>
+          <div className="flex flex-col items-center animate-[floatGentle_4.5s_ease-in-out_infinite_reverse_1s] mb-4">
+            <img src="/assets/avo.png" className="w-16 md:w-24 max-w-[100px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Avo Mascot" />
+          </div>
+          <div className="flex flex-col items-center animate-[floatGentle_6s_ease-in-out_infinite_0.5s]">
+            <img src="/assets/kitty.png" className="w-20 md:w-28 max-w-[120px] h-auto object-contain opacity-60 drop-shadow-xl" alt="Kitty Mascot" />
+          </div>
       </div>
       
       {/* Overlay gradient at bottom for smooth cutoff */}
