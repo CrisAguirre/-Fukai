@@ -68,8 +68,8 @@ export default function CheesecakeBuilderPage() {
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                 step >= s
-                  ? 'bg-gradient-to-br from-[var(--fukai-sakura)] to-[var(--fukai-lavender)] text-white'
-                  : 'bg-white/10 text-white/30'
+                  ? 'bg-gradient-to-br from-[var(--fukai-sakura)] to-[var(--fukai-lavender)] text-[var(--fukai-cream)]'
+                  : 'bg-white/10 text-[var(--fukai-cream)]/30'
               }`}
             >
               {s}
@@ -89,14 +89,14 @@ export default function CheesecakeBuilderPage() {
       case 1:
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <h4 className="text-xs uppercase tracking-widest text-white/40 mb-4">Tipo de Cheesecake</h4>
+            <h4 className="text-xs uppercase tracking-widest text-[var(--fukai-cream)]/40 mb-4">Tipo de Cheesecake</h4>
             <div className="flex gap-3">
               <button
                 onClick={() => setTipo('horneado')}
                 className={`flex-1 py-3 rounded-xl font-medium transition-all text-sm ${
                   tipo === 'horneado'
                     ? 'bg-gradient-to-br from-[var(--fukai-caramel)] to-[var(--fukai-gold)] text-[var(--fukai-deep)] shadow-lg shadow-[var(--fukai-caramel)]/30'
-                    : 'bg-white/5 text-white/70 border border-white/10'
+                    : 'bg-white/5 text-[var(--fukai-cream)]/70 border border-white/10'
                 }`}
               >
                 🔥 Horneado · $350
@@ -106,7 +106,7 @@ export default function CheesecakeBuilderPage() {
                 className={`flex-1 py-3 rounded-xl font-medium transition-all text-sm ${
                   tipo === 'refrigerado'
                     ? 'bg-gradient-to-br from-[var(--fukai-lavender)] to-[var(--fukai-sakura)] text-[var(--fukai-deep)] shadow-lg shadow-[var(--fukai-lavender)]/30'
-                    : 'bg-white/5 text-white/70 border border-white/10'
+                    : 'bg-white/5 text-[var(--fukai-cream)]/70 border border-white/10'
                 }`}
               >
                 ❄️ Refrigerado · $300
@@ -117,7 +117,7 @@ export default function CheesecakeBuilderPage() {
       case 2:
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <h4 className="text-xs uppercase tracking-widest text-white/40 mb-4">Relleno</h4>
+            <h4 className="text-xs uppercase tracking-widest text-[var(--fukai-cream)]/40 mb-4">Relleno</h4>
             <div className="flex flex-col gap-3">
               {RELLENOS.map(r => (
                 <button
@@ -131,8 +131,8 @@ export default function CheesecakeBuilderPage() {
                 >
                   <span className="text-2xl">{r.emoji}</span>
                   <div className="text-left">
-                    <p className="text-white font-medium">{r.name}</p>
-                    <p className="text-xs text-white/40">{r.desc}</p>
+                    <p className="text-[var(--fukai-cream)] font-medium">{r.name}</p>
+                    <p className="text-xs text-[var(--fukai-cream)]/40">{r.desc}</p>
                   </div>
                   {r.id === 'limon' && <span className="ml-auto text-xs text-[var(--fukai-gold)]">+$25</span>}
                 </button>
@@ -143,7 +143,7 @@ export default function CheesecakeBuilderPage() {
       case 3:
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <h4 className="text-xs uppercase tracking-widest text-white/40 mb-4">Base de Galleta <span className="text-white/20">(opcional)</span></h4>
+            <h4 className="text-xs uppercase tracking-widest text-[var(--fukai-cream)]/40 mb-4">Base de Galleta <span className="text-[var(--fukai-cream)]/20">(opcional)</span></h4>
             <div className="flex flex-col gap-3">
               {BASES_GALLETAS.map(b => (
                 <button
@@ -157,8 +157,8 @@ export default function CheesecakeBuilderPage() {
                 >
                   <span className="text-2xl">{b.emoji}</span>
                   <div className="text-left">
-                    <p className="text-white font-medium">{b.name}</p>
-                    <p className="text-xs text-white/40">{b.desc}</p>
+                    <p className="text-[var(--fukai-cream)] font-medium">{b.name}</p>
+                    <p className="text-xs text-[var(--fukai-cream)]/40">{b.desc}</p>
                   </div>
                   {b.id === 'oreo' && <span className="ml-auto text-xs text-[var(--fukai-gold)]">+$25</span>}
                   {b.id === 'vainilla' && <span className="ml-auto text-xs text-[var(--fukai-gold)]">+$15</span>}
@@ -170,7 +170,7 @@ export default function CheesecakeBuilderPage() {
       case 4:
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <h4 className="text-xs uppercase tracking-widest text-white/40 mb-4">Término de Dorado</h4>
+            <h4 className="text-xs uppercase tracking-widest text-[var(--fukai-cream)]/40 mb-4">Término de Dorado</h4>
             <div className="flex gap-3">
               {DORADOS.map(d => (
                 <button
@@ -179,7 +179,7 @@ export default function CheesecakeBuilderPage() {
                   className={`flex-1 py-3 rounded-xl font-medium transition-all text-sm ${
                     dorado === d.id
                       ? 'bg-gradient-to-br from-[var(--fukai-caramel)] to-[var(--fukai-gold)] text-[var(--fukai-deep)] shadow-lg shadow-[var(--fukai-caramel)]/30'
-                      : 'bg-white/5 text-white/70 border border-white/10'
+                      : 'bg-white/5 text-[var(--fukai-cream)]/70 border border-white/10'
                   }`}
                 >
                   {d.emoji} {d.name}
@@ -191,7 +191,7 @@ export default function CheesecakeBuilderPage() {
       case 5:
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <h4 className="text-xs uppercase tracking-widest text-white/40 mb-4">Decorado Superior</h4>
+            <h4 className="text-xs uppercase tracking-widest text-[var(--fukai-cream)]/40 mb-4">Decorado Superior</h4>
             <div className="grid grid-cols-2 gap-3">
               {DECORADOS.map(d => (
                 <button
@@ -204,9 +204,9 @@ export default function CheesecakeBuilderPage() {
                   }`}
                 >
                   <span className="text-2xl">{d.emoji}</span>
-                  <span className="text-xs text-white/70 text-center">{d.name}</span>
+                  <span className="text-xs text-[var(--fukai-cream)]/70 text-center">{d.name}</span>
                   {d.price > 0 && <span className="text-xs text-[var(--fukai-gold)]">+${d.price}</span>}
-                  {d.price === 0 && <span className="text-xs text-white/30">Gratis</span>}
+                  {d.price === 0 && <span className="text-xs text-[var(--fukai-cream)]/30">Gratis</span>}
                 </button>
               ))}
             </div>
@@ -261,10 +261,10 @@ export default function CheesecakeBuilderPage() {
       {/* Controls Area */}
       <div className="w-full md:w-96 glass-light p-6 md:p-8 flex flex-col justify-between">
         <div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-[var(--fukai-cream)] mb-2">
             Arma tu Cheesecake ✨
           </h2>
-          <p className="text-xs text-white/30 mb-6">Selecciona cada opción paso a paso</p>
+          <p className="text-xs text-[var(--fukai-cream)]/30 mb-6">Selecciona cada opción paso a paso</p>
 
           {renderStepIndicator()}
 
@@ -273,7 +273,7 @@ export default function CheesecakeBuilderPage() {
 
         <div className="mt-8 pt-6 border-t border-white/10">
           <div className="flex justify-between items-center mb-6">
-            <span className="text-white/60 text-sm">Total estimado:</span>
+            <span className="text-[var(--fukai-cream)]/60 text-sm">Total estimado:</span>
             <span className="text-3xl font-bold bg-gradient-to-r from-[var(--fukai-sakura)] to-[var(--fukai-lavender)] bg-clip-text text-transparent">
               ${total}
             </span>
@@ -300,7 +300,7 @@ export default function CheesecakeBuilderPage() {
               <button
                 onClick={handleConfirm}
                 disabled={loading}
-                className="w-full py-4 rounded-full bg-gradient-to-r from-[var(--fukai-sakura-deep)] to-[var(--fukai-lavender)] text-white font-display font-semibold text-lg hover:shadow-lg hover:shadow-[var(--fukai-sakura)]/30 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
+                className="w-full py-4 rounded-full bg-gradient-to-r from-[var(--fukai-sakura-deep)] to-[var(--fukai-lavender)] text-[var(--fukai-cream)] font-display font-semibold text-lg hover:shadow-lg hover:shadow-[var(--fukai-sakura)]/30 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
               >
                 {loading ? 'Creando pedido...' : `¡A cocinar! · $${total}`}
               </button>

@@ -179,9 +179,9 @@ const PRECIOS = {
 };
 
 const COOKERS = {
-  kitty:  { name: 'Kitty',  fullName: 'Hello Kitty', emoji: '🎀' },
-  kato:   { name: 'Kato',   fullName: 'Aguacate',    emoji: '🥑' },
-  chiwi:  { name: 'Chiwi',  fullName: 'Capibara',    emoji: '🧉' },
+  kitty:  { name: 'Kitty',  fullName: 'Hello Kitty', emoji: '🎀', img: '/assets/kitty.png', color: 'hsla(340, 80%, 85%, 1)' },
+  kato:   { name: 'Kato',   fullName: 'Aguacate',    emoji: '🥑', img: '/assets/avo.png',  color: 'hsla(270, 40%, 70%, 1)' },
+  chiwi:  { name: 'Chiwi',  fullName: 'Capibara',    emoji: '🧉', img: '/assets/capi.png', color: 'hsla(30, 70%, 50%, 1)' },
 };
 
 const useOrderStore = create((set, get) => ({

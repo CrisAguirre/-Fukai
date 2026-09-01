@@ -45,7 +45,7 @@ export default function OrderMonitorPage() {
 
   if (!currentOrder) {
     return (
-      <div className="h-screen w-full bg-[var(--fukai-deep)] text-white flex items-center justify-center">
+      <div className="h-screen w-full bg-[var(--fukai-deep)] text-[var(--fukai-cream)] flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-4 animate-[floatGentle_2s_ease-in-out_infinite]">🍰</div>
           <p className="text-xl font-display">Cargando tu experiencia...</p>
@@ -66,8 +66,8 @@ export default function OrderMonitorPage() {
       <div className="absolute top-0 left-0 w-full z-[var(--z-ui)] pointer-events-none">
         <div className="flex justify-between items-start p-4 md:p-6">
           <div className="glass-light p-3 rounded-xl backdrop-blur-md">
-            <p className="text-xs text-white/50 font-mono">Pedido #{currentOrder._id.slice(-6)}</p>
-            <p className="text-sm font-display font-semibold text-white capitalize">{currentOrder.cocinero}</p>
+            <p className="text-xs text-[var(--fukai-cream)]/50 font-mono">Pedido #{currentOrder._id.slice(-6)}</p>
+            <p className="text-sm font-display font-semibold text-[var(--fukai-cream)] capitalize">{currentOrder.cocinero}</p>
           </div>
           <button
             onClick={() => navigate('/')}
@@ -94,9 +94,9 @@ export default function OrderMonitorPage() {
         >
           <div className="flex items-center gap-3 mb-2">
             <span className="text-2xl">{stepEmoji}</span>
-            <h3 className="font-display font-bold text-white text-lg">{stepLabel}</h3>
+            <h3 className="font-display font-bold text-[var(--fukai-cream)] text-lg">{stepLabel}</h3>
           </div>
-          <p className="text-sm text-white/60 leading-relaxed">{stepLibreto}</p>
+          <p className="text-sm text-[var(--fukai-cream)]/60 leading-relaxed">{stepLibreto}</p>
           <div className="mt-3 w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-[var(--fukai-sakura)] to-[var(--fukai-gold)] rounded-full"
@@ -105,7 +105,7 @@ export default function OrderMonitorPage() {
               transition={{ duration: 1, ease: 'easeOut' }}
             />
           </div>
-          <p className="text-xs text-white/30 mt-2 text-right">{progress}% completo</p>
+          <p className="text-xs text-[var(--fukai-cream)]/30 mt-2 text-right">{progress}% completo</p>
         </motion.div>
       </div>
     </div>

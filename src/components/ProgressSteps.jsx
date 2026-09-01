@@ -81,7 +81,7 @@ export default function ProgressSteps({
 
                 {showLabels && !compact && (
                   <span className={`text-xs font-medium text-center w-24 leading-tight ${
-                    isActive ? 'text-[var(--fukai-sakura)]' : 'text-white/50'
+                    isActive ? 'text-[var(--fukai-sakura)]' : 'text-[var(--fukai-cream)]/50'
                   }`}>
                     {step.label}
                   </span>

@@ -44,78 +44,78 @@ export default function ShippingFormPage() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         className="glass p-8 w-full max-w-2xl z-10"
       >
-        <h2 className="text-3xl font-display font-bold text-white mb-6 text-center">
+        <h2 className="text-3xl font-display font-bold text-[var(--fukai-cream)] mb-6 text-center">
           ¿A dónde enviamos tu Cheesecake? 🚀
         </h2>
         
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-white/80 text-sm">Nombre de quien recibe</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Nombre de quien recibe</label>
             <input 
               required
               type="text" 
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)]" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)]" 
             />
           </div>
           
           <div className="space-y-2">
-            <label className="text-white/80 text-sm">Teléfono</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Teléfono</label>
             <input 
               required
               type="tel" 
               name="telefono"
               value={formData.telefono}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)]" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)]" 
             />
           </div>
           
           <div className="space-y-2 md:col-span-2">
-            <label className="text-white/80 text-sm">Dirección Completa</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Dirección Completa</label>
             <input 
               required
               type="text" 
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)]" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)]" 
             />
           </div>
           
           <div className="space-y-2">
-            <label className="text-white/80 text-sm">Ciudad</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Ciudad</label>
             <input 
               required
               type="text" 
               name="ciudad"
               value={formData.ciudad}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)]" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)]" 
             />
           </div>
           
           <div className="space-y-2">
-            <label className="text-white/80 text-sm">Código Postal</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Código Postal</label>
             <input 
               type="text" 
               name="codigoPostal"
               value={formData.codigoPostal}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)]" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)]" 
             />
           </div>
           
           <div className="space-y-2 md:col-span-2">
-            <label className="text-white/80 text-sm">Instrucciones o Referencia (Opcional)</label>
+            <label className="text-[var(--fukai-cream)]/80 text-sm">Instrucciones o Referencia (Opcional)</label>
             <textarea 
               name="referencia"
               value={formData.referencia}
               onChange={handleChange}
               rows="2"
-              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:border-[var(--fukai-sakura)] resize-none" 
+              className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-[var(--fukai-cream)] focus:outline-none focus:border-[var(--fukai-sakura)] resize-none" 
             />
           </div>
           

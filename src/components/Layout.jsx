@@ -20,9 +20,9 @@ export default function Layout({ children }) {
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to={user.rol === 'admin' || user.rol === 'cocinero' ? '/admin' : '/select-cooker'} 
-            className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 rounded-full glass flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(255,182,193,0.3)]">
-              <img src="/assets/logo.png" alt="Fukai" className="w-full h-full object-contain" />
+            className="flex items-center gap-3 text-[var(--fukai-cream)] hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 rounded-full glass flex items-center justify-center flex-shrink-0">
+              <img src="/assets/logo.png" alt="Fukai" className="logo-fukai-sm" />
             </div>
             <span className="font-display font-bold text-xl tracking-widest uppercase hidden sm:block">Fukai</span>
           </Link>
@@ -36,7 +36,7 @@ export default function Layout({ children }) {
                   `text-sm font-medium tracking-wider uppercase transition-colors ${
                     isActive 
                       ? 'text-[var(--fukai-sakura)]' 
-                      : 'text-[var(--fukai-cream)]/70 hover:text-white'
+                      : 'text-[var(--fukai-cream)]/70 hover:text-[var(--fukai-cream)]'
                   }`}
               >
                 {link.label}
@@ -44,7 +44,7 @@ export default function Layout({ children }) {
             ))}
 
             <div className="flex items-center gap-4 ml-4 border-l border-white/10 pl-4">
-              <span className="text-sm text-white/60 hidden lg:block">
+              <span className="text-sm text-[var(--fukai-cream)]/60 hidden lg:block">
                 {user.nombre} · {user.rol}
               </span>
               <button 

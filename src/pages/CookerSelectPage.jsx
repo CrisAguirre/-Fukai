@@ -65,7 +65,7 @@ export default function CookerSelectPage() {
             <h3 className="mt-6 text-2xl font-display font-medium text-[var(--fukai-cream)] z-10">
               {cooker.name}
             </h3>
-            <p className="text-xs text-white/40 mt-1">{cooker.fullName}</p>
+            <p className="text-xs text-[var(--fukai-cream)]/40 mt-1">{cooker.fullName}</p>
           </motion.div>
         ))}
       </div>

@@ -7,7 +7,5 @@ import './animations/keyframes.css'
 import './styles/landing.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />
 )

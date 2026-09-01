@@ -630,12 +630,6 @@
   gap: 0.75rem;
 }
 
-.footer-logo img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
 .footer-logo span {
   font-family: var(--font-display);
   font-weight: 700;
